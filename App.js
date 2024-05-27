@@ -1,24 +1,22 @@
-import "react-native-gesture-handler";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import Counter from "./Counter";
 
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <Counter initialValue={0} />
+    </View>
+  );
+};
 
-import { useLoadedAssets } from "./hooks/useLoadedAssets";
-import Navigation from "./navigation";
-import { useColorScheme } from "react-native";
+export default App;
 
-export default function App() {
-  const isLoadingComplete = useLoadedAssets();
-  const colorScheme = useColorScheme();
-
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
-    );
-  }
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "lightblue",
+  },
+});
